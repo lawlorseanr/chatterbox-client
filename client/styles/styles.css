@@ -89,7 +89,25 @@ form input[type=text] {
 }
 
 .message {
+    background-color: lightgray;
+    margin: 5px 0;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.messageText {
     width: 100%;
     word-wrap: break-word;
-    padding: 5px 0;
+}
+
+.username,
+.messageText,
+.timestamp {
+    padding: 5px
+}
+
+.timestamp {
+    color: gray;
 }

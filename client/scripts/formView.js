@@ -16,7 +16,7 @@ var FormView = {
     var username = window.location.search.indexOf('username=');
     message.username = window.location.search.slice( + 10);
     message.text = this.message.value;
-    message.roomname = 1;
+    message.roomname = RoomsView.rooms.getCurrent();
 
     this.message.value = '';
     Parse.create(message);
@@ -29,23 +29,20 @@ var FormView = {
 
   render: function(data) {
     for (var i = 0; i < data.length; i++) {
-      /*
-      check for naughty things
-       */
 
-      var badWords = ['console', 'style'];
+      var badWords = ['console.log', '<style'];
       var stringyData = JSON.stringify(data[i]).toLowerCase();
       var naughty = _.reduce(badWords, function(memo, str) {
         return memo || stringyData.indexOf(str) >= 0;
       }, false);
 
-      if (naughty) {
+      var invalid = data[i].username === null || data[i].text.length === 0;
+      if (naughty || invalid) {
         continue;
       }
 
       var message = {};
       message.username = data[i].username;
-      message.username = data[i].github_handle;
       message.text = data[i].text;
       message.roomname = data[i].roomname;
       message.campus = data[i].campus;
