@@ -12,18 +12,14 @@ var App = {
     MessagesView.initialize();
 
     // Fetch initial batch of messages
-    App.startSpinner();
-    App.fetch(App.stopSpinner);
+    App.fetch();
 
   },
 
-  fetch: function(callback = ()=>{}) {
-    Parse.readAll((data) => {
-      // examine the response from the server request:
-      console.log(data);
-
-      callback();
-    });
+  fetch: function() {
+    App.startSpinner();
+    Parse.readAll();
+    App.stopSpinner();
   },
 
   startSpinner: function() {
