@@ -21,17 +21,12 @@ var FormView = {
 
     Parse.create(message);
 
-    Parse.readAll((data) => {
-      FormView.render(data);
-    });
+    FormView.update();
   },
 
   update: function() {
     App.startSpinner();
-    Parse.readAll((data) => {
-      FormView.render(data);
-    });
-    App.stopSpinner();
+    App.fetch(App.stopSpinner);
   },
 
   render: function(data) {
