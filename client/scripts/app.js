@@ -18,6 +18,7 @@ var App = {
   },
 
   fetch: function(callback = ()=>{}) {
+    $('#chats').html('');
     Parse.readAll((data) => {
       FormView.render(data);
     });
