@@ -78,15 +78,15 @@ describe('chatterbox', function() {
 
     it('should be able to add rooms to the DOM', function() {
       RoomsView.render('superLobby');
-      expect($('#rooms select').children().length).to.equal(1);
+      expect($('#rooms select').children().length).to.equal(2);
     });
 
   });
 
   describe('events', function() {
     it('should add a friend upon clicking their username', function() {
+      debugger;
       sinon.spy(Friends, 'toggleStatus');
-
       App.initialize();
       MessagesView.render({
         username: 'Mel Brooks',
@@ -102,6 +102,7 @@ describe('chatterbox', function() {
     it('should add a room when clicking add', function() {
       sinon.spy(Rooms, 'add');
       var prompt = window.prompt;
+      deugger;
       window.prompt = sinon.stub().returns('testroom');
 
       App.initialize();

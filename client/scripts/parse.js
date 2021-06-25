@@ -5,7 +5,7 @@ var Parse = {
   create: function(message, successCB, errorCB = null) {
     $.ajax({
       // This is the url you should use to communicate with the API server.
-      url: 'https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/hr-lax',
+      url: Parse.server,
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',

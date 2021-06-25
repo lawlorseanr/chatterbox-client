@@ -16,6 +16,7 @@
         if (search[search.length - 1] !== '?') {
           search += '&';
         }
+
         search += 'username=' + (prompt('What is your name?') || 'anonymous');
         window.location.search = search;
       }
@@ -33,6 +34,7 @@
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
         <input type="submit" name="submit" class="submit"/>
+        <input type="button" name ="update" value="Update" id="updateButton"/>
       </form>
     </div>
     <div id="chats"></div>

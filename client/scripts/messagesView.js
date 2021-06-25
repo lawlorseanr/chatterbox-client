@@ -6,8 +6,9 @@ var MessagesView = {
   },
 
   render: function(message) {
-    var $newMessage = $('<span>' + message + '</span>');
+    var $newMessage = $('<div class="message"><span>' + message.username + ': ' + message.text + '</span></div>');
     this.$chats.append($newMessage);
+    //formView.handleSubmit();
   }
 
 };
