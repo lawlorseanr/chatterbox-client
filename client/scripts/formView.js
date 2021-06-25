@@ -12,14 +12,14 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    debugger;
     var message = {};
     var username = window.location.search.indexOf('username=');
     message.username = window.location.search.slice( + 10);
     message.text = this.message.value;
     message.roomname = 1;
 
-    //Parse.create(message);
+    this.message.value = '';
+    Parse.create(message);
   },
 
   update: function() {
