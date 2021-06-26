@@ -1,27 +1,27 @@
-class Rooms {
+var Rooms = {
 
-  constructor() {
-    this.roomList = [];
-    this.currentRoom = null;
-  }
+  roomList: [],
+  currentRoom: null,
 
-  get() {
+  get: function() {
     return this.roomList;
-  }
+  },
 
-  add(roomname) {
-    this.roomList.push(roomname);
-  }
+  add: function(roomname) {
+    if (this.roomList.indexOf(roomname) < 0) {
+      this.roomList.push(roomname);
+    }
+  },
 
-  set(roomname) {
+  set: function(roomname) {
     if (this.roomList.indexOf(roomname) <= 0) {
       this.add(roomname);
     }
     this.currentRoom = roomname;
-  }
+  },
 
-  getCurrent() {
+  getCurrent: function() {
     return this.currentRoom;
   }
 
-}
+};

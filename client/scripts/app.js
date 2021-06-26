@@ -11,20 +11,13 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
 
-    // Fetch initial batch of messages
-    App.startSpinner();
-    App.fetch(App.stopSpinner);
-
+    App.fetch();
   },
 
-  fetch: function(callback = ()=>{}) {
-    $('#chats').html('');
-    Parse.readAll((data) => {
-      FormView.render(data);
-    });
-
-    // turn off the spinner
-    callback();
+  fetch: function() {
+    App.startSpinner();
+    Parse.readAll();
+    App.stopSpinner();
   },
 
   startSpinner: function() {

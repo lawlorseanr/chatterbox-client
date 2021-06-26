@@ -10,7 +10,7 @@ var Parse = {
       data: JSON.stringify(message),
       contentType: 'application/json',
       success: function (data) {
-        FormView.update();
+        Parse.readAll();
       },
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
@@ -25,7 +25,13 @@ var Parse = {
       type: 'GET',
       data: { order: '-createdAt' },
       contentType: 'application/json',
-      success: successCB,
+      success: function(data) {
+        Messages.update(data);
+        MessagesView.render();
+
+        RoomsView.render();
+        FormView.render();
+      },
       error: errorCB || function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
       }

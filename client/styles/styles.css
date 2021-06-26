@@ -67,6 +67,7 @@ form input[type=text] {
 
 .chat .username {
     font-weight: 800;
+    padding: 5px 5px 0 5px;
 }
 
 .chat:hover {
@@ -90,24 +91,16 @@ form input[type=text] {
 
 .message {
     background-color: lightgray;
-    margin: 5px 0;
-}
-
-.username {
-    font-weight: bold;
+    margin: 5px;
 }
 
 .messageText {
     width: 100%;
     word-wrap: break-word;
-}
-
-.username,
-.messageText,
-.timestamp {
-    padding: 5px
+    padding: 5px;
 }
 
 .timestamp {
     color: gray;
+    padding: 0 5px 5px 5px;
 }

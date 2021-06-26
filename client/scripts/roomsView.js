@@ -2,21 +2,29 @@ var RoomsView = {
 
   $button: $('#rooms button'),
   $select: $('#rooms select'),
-  rooms: new Rooms(),
 
   initialize: function() {
-    this.rooms.set('Main');
+    RoomsView.$button.on('click', RoomsView.handleAddRoom);
+
+    Rooms.set('Main');
     var $room = $('<option>Main</option>');
     this.$select.prepend($room);
-
-    search = window.location.search;
-    search += 'roomname=' + 'Main';
-    //window.location.search = search;
   },
 
   render: function(room) {
-    var $room = $('<span>' + room + '</span>');
-    this.$select.prepend($room);
+    this.$select.html('');
+    for (var i = 0; i < Rooms.roomList.length; i++) {
+      var $room = $('<option>' + Rooms.roomList[i] + '</option>');
+      this.$select.prepend($room);
+    }
+  },
+
+  handleAddRoom: function() {
+    debugger;
+    var newRoom = prompt('What is your name?');
+    Rooms.add(newRoom);
+
+    RoomsView.render();
   }
 
 };
