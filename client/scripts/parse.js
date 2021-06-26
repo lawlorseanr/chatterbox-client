@@ -27,8 +27,8 @@ var Parse = {
       contentType: 'application/json',
       success: function(data) {
         Messages.update(data);
-        MessagesView.render();
 
+        MessagesView.render(Rooms.currentRoom);
         RoomsView.render();
         FormView.render();
       },

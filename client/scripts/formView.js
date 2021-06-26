@@ -6,7 +6,8 @@ var FormView = {
     FormView.$form.on('submit', FormView.handleSubmit);
     document.getElementById('updateButton').addEventListener('click', function() {
       $('#chats').html('');
-      App.update();
+      //Rooms.set('Main');
+      App.fetch();
     });
   },
 

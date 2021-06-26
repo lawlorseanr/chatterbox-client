@@ -1,7 +1,7 @@
 var Rooms = {
 
   roomList: [],
-  currentRoom: null,
+  currentRoom: undefined,
 
   get: function() {
     return this.roomList;
@@ -19,9 +19,5 @@ var Rooms = {
     }
     this.currentRoom = roomname;
   },
-
-  getCurrent: function() {
-    return this.currentRoom;
-  }
 
 };

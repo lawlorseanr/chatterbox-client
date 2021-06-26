@@ -5,7 +5,7 @@ var MessagesView = {
   initialize: function() {
   },
 
-  render: function() {
+  render: function(room) {
     var data = Messages.messagesList;
     this.$chats.html('');
 
@@ -21,10 +21,22 @@ var MessagesView = {
         continue;
       }
 
-      Rooms.add(data[i].roomname);
+      // if room is defined, we just want to filter exisitng list
+      // if room is something other than null (and not naughty), add
+      if ((room === undefined || room === 'Main') && data[i].roomname !== null) {
+        Rooms.add(data[i].roomname);
+      }
 
-      var $newMessage = $(MessageView.render(data[i]));
-      this.$chats.append($newMessage);
+      if (room === undefined || room === 'Main') {
+        // add everything
+        var $newMessage = $(MessageView.render(data[i]));
+        this.$chats.append($newMessage);
+      } else if (data[i].roomname === room) {
+        // add only room
+        var $newMessage = $(MessageView.render(data[i]));
+        this.$chats.append($newMessage);
+      }
+
     }
   }
 
