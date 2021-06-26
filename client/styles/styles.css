@@ -78,7 +78,7 @@ form input[type=text] {
 .fancychat {
     padding: 5px;
     margin-bottom: 5px;
-    background-color: lightyellow;
+    background-color: lightgreen;
 }
 
 .fancychat .username {
@@ -87,7 +87,7 @@ form input[type=text] {
 }
 
 .fancychat:hover {
-    background-color: lightgreen;
+    background-color: mediumaquamarine;
 }
 /* */
 
