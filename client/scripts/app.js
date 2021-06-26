@@ -11,9 +11,7 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
 
-    // Fetch initial batch of messages
     App.fetch();
-
   },
 
   fetch: function() {

@@ -1,12 +1,9 @@
 var Messages = {
 
-  storage: [],
+  messagesList: [],
 
   update: function(data) {
-    // zero out storage
-    // iterate over data
-    //  replace storage
-    this.storage = data;
+    this.messagesList = data;
   }
 
 };

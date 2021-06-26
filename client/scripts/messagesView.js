@@ -1,35 +1,61 @@
 var MessagesView = {
 
   $chats: $('#chats'),
+  friend: undefined,
 
   initialize: function() {
   },
 
-  render: function() {
-    // reset element
+  render: function(room) {
+    var data = Messages.messagesList;
     this.$chats.html('');
-    for (var i = 0; i < Messages.storage.length; i++) {
-      // stringify message
-      var message = JSON.stringify(Messages.storage[i]);
-      // if there's no undesirable text
-      // want length > 0; don't want  script or style tags
-      var valid = Messages.storage[i].text.length > 0 && Messages.storage[i].username.length > 0;
-      if (message.indexOf('script') >= 0 || message.indexOf('style') >= 0 || !valid) {
+
+    for (var i = 0; i < data.length; i++) {
+      var badWords = ['<style', '<script'];
+      var stringyData = JSON.stringify(data[i]).toLowerCase();
+      var naughty = _.reduce(badWords, function(memo, str) {
+        return memo || stringyData.indexOf(str) >= 0;
+      }, false);
+
+      var invalid = data[i].username === null || data[i].text.length === 0;
+      if (naughty || invalid) {
         continue;
       }
-      Rooms.add(Messages.storage[i].roomname);
-      MessagesView.renderMessage(Messages.storage[i]);
-    }
-    // messages.forEach(message => MessagesView.$chats.append(MessageView.render(message)));
-    // creat a new div from the template
-    // var $message = MessageView.render(message);
-    // append that new div element to $chats
-    // MessagesView.$chats.append($message);
-  },
 
-  renderMessage: function(message) {
-    var $message = MessageView.render(message);
-    MessagesView.$chats.append($message);
+      // if room is defined, we just want to filter exisitng list
+      // if room is something other than null (and not naughty), add
+      if ((room === undefined || room === 'Main') && data[i].roomname !== null) {
+        Rooms.add(data[i].roomname);
+      }
+
+      if (MessagesView.friend === undefined || data[i].github_handle !== MessagesView.friend) {
+        var renderfn = MessageView.render;
+      } else {
+        var renderfn = MessageView.fancyrender;
+      }
+
+      if (!RoomsView.singleRoom) {
+        // add everything
+        var $newMessage = $(renderfn(data[i]));
+        this.$chats.append($newMessage);
+      } else if (data[i].roomname === room) {
+        // add only room
+        var $newMessage = $(renderfn(data[i]));
+        this.$chats.append($newMessage);
+      }
+    }
+    $('.chat').on('click', function() {
+      var rawUser = $(this).children()[0].textContent;
+      var firstParen = rawUser.indexOf(' (') + 2;
+      var lastParen = rawUser.indexOf('):');
+      var user = rawUser.substr(firstParen, lastParen - firstParen);
+      if (MessagesView.friend !== user) {
+        MessagesView.friend = user;
+      } else {
+        MessagesView.friend = undefined;
+      }
+      MessagesView.render(Rooms.currentRoom);
+    });
   }
 
 };

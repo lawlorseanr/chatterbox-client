@@ -3,7 +3,6 @@ var Parse = {
   server: `https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/${window.CAMPUS}`,
 
   create: function(message, successCB, errorCB = null) {
-    // todo: save a message to the server
     $.ajax({
       // This is the url you should use to communicate with the API server.
       url: Parse.server,
@@ -28,7 +27,10 @@ var Parse = {
       contentType: 'application/json',
       success: function(data) {
         Messages.update(data);
-        MessagesView.render();
+
+        MessagesView.render(Rooms.currentRoom);
+        RoomsView.render();
+        FormView.render();
       },
       error: errorCB || function(error) {
         console.error('chatterbox: Failed to fetch messages', error);

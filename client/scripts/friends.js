@@ -1,4 +1,11 @@
-var Friends = {
+class Friends {
 
+  constructor() {
+    this.friendList = [];
+  }
 
-};
+  toggleStatus() {
+
+  }
+
+}

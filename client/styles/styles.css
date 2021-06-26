@@ -67,11 +67,29 @@ form input[type=text] {
 
 .chat .username {
     font-weight: 800;
+    padding: 5px 5px 0 5px;
 }
 
 .chat:hover {
     background-color: #ddd;
 }
+
+/* */
+.fancychat {
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: lightyellow;
+}
+
+.fancychat .username {
+    font-weight: 800;
+    padding: 5px 5px 0 5px;
+}
+
+.fancychat:hover {
+    background-color: lightgreen;
+}
+/* */
 
 .spinner {
     float: right;
@@ -88,3 +106,18 @@ form input[type=text] {
     background-color: #0090da;
 }
 
+.message {
+    background-color: lightgray;
+    margin: 5px;
+}
+
+.messageText {
+    width: 100%;
+    word-wrap: break-word;
+    padding: 5px;
+}
+
+.timestamp {
+    color: gray;
+    padding: 0 5px 5px 5px;
+}

@@ -1,17 +1,23 @@
 var Rooms = {
 
-  roomList: new Set(),
-  selected: 'Lobby',
+  roomList: [],
+  currentRoom: undefined,
+
+  get: function() {
+    return this.roomList;
+  },
 
   add: function(roomname) {
-    roomList.add(roomname);
-    Rooms.updateSelected(roomname);
+    if (this.roomList.indexOf(roomname) < 0) {
+      this.roomList.push(roomname);
+    }
   },
 
-  updateSelected: function(roomname) {
-    this.selected = roomname;
+  set: function(roomname) {
+    if (this.roomList.indexOf(roomname) <= 0) {
+      this.add(roomname);
+    }
+    this.currentRoom = roomname;
   },
-
-
 
 };
