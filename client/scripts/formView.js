@@ -17,7 +17,6 @@ var FormView = {
     var message = {};
     message.username = App.username;
     message.text = this.message.value;
-    debugger;
     message.roomname = Rooms.currentRoom;
 
     this.message.value = '';

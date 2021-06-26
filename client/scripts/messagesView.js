@@ -11,13 +11,16 @@ var MessagesView = {
     this.$chats.html('');
 
     for (var i = 0; i < data.length; i++) {
-      var badWords = ['<style', '<script'];
+      //var badWords = ['<style', '<script'];
+      var badWords = [];
       var stringyData = JSON.stringify(data[i]).toLowerCase();
       var naughty = _.reduce(badWords, function(memo, str) {
         return memo || stringyData.indexOf(str) >= 0;
       }, false);
 
-      var invalid = data[i].username === null || data[i].text.length === 0;
+      var invalidText = data[i].text === undefined && data[i].text === null && data[i].text.length < 0;
+      var invalidUser = data[i].username === undefined && data[i].username === null && data[i].username.length < 0;
+      var invalid = invalidText || invalidUser;
       if (naughty || invalid) {
         continue;
       }
