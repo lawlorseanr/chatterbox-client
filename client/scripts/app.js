@@ -18,6 +18,8 @@ var App = {
     App.startSpinner();
     Parse.readAll();
     App.stopSpinner();
+
+    setTimeout(App.fetch, 5000);
   },
 
   startSpinner: function() {
