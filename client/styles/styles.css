@@ -74,6 +74,23 @@ form input[type=text] {
     background-color: #ddd;
 }
 
+/* */
+.fancychat {
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: lightyellow;
+}
+
+.fancychat .username {
+    font-weight: 800;
+    padding: 5px 5px 0 5px;
+}
+
+.fancychat:hover {
+    background-color: lightgreen;
+}
+/* */
+
 .spinner {
     float: right;
     height: 46px;

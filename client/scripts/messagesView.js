@@ -1,6 +1,7 @@
 var MessagesView = {
 
   $chats: $('#chats'),
+  friend: undefined,
 
   initialize: function() {
   },
@@ -27,17 +28,34 @@ var MessagesView = {
         Rooms.add(data[i].roomname);
       }
 
+      if (MessagesView.friend === undefined || data[i].github_handle !== MessagesView.friend) {
+        var renderfn = MessageView.render;
+      } else {
+        var renderfn = MessageView.fancyrender;
+      }
+
       if (room === undefined || room === 'Main') {
         // add everything
-        var $newMessage = $(MessageView.render(data[i]));
+        var $newMessage = $(renderfn(data[i]));
         this.$chats.append($newMessage);
       } else if (data[i].roomname === room) {
         // add only room
-        var $newMessage = $(MessageView.render(data[i]));
+        var $newMessage = $(renderfn(data[i]));
         this.$chats.append($newMessage);
       }
-
     }
+    $('.chat').on('click', function() {
+      var rawUser = $(this).children()[0].textContent;
+      var firstParen = rawUser.indexOf(' (') + 2;
+      var lastParen = rawUser.indexOf('):');
+      var user = rawUser.substr(firstParen, lastParen - firstParen);
+      if (MessagesView.friend !== user) {
+        MessagesView.friend = user;
+      } else {
+        MessagesView.friend = undefined;
+      }
+      MessagesView.render();
+    });
   }
 
 };
