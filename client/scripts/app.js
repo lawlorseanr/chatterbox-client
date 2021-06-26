@@ -12,14 +12,17 @@ var App = {
     MessagesView.initialize();
 
     App.fetch();
+    setInterval(App.fetch, 5000);
   },
 
-  fetch: function() {
+  fetch: function(callback = () => {}) {
     App.startSpinner();
-    Parse.readAll();
+    Parse.readAll(function(data) {
+      Messages.update(data, MessagesView.render);
+      Rooms.update(data, RoomsView.render);
+      callback();
+    });
     App.stopSpinner();
-
-    setTimeout(App.fetch, 5000);
   },
 
   startSpinner: function() {

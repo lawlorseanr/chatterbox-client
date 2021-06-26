@@ -7,15 +7,18 @@ var FormView = {
   },
 
   handleSubmit: function(event) {
-    // Stop the browser from submitting the form
+    // Stop the browser from submitting the form (default POST)
     event.preventDefault();
     var message = {};
     message.username = App.username;
-    message.text = this.message.value;
-    message.roomname = Rooms.currentRoom;
+    message.text = FormView.$form.find('#message').val();
+    message.roomname = Rooms.select || 'Main';
 
-    this.message.value = '';
-    Parse.create(message);
+    FormView.$form.find('#message').value = '';
+    Parse.create(message, function(data) {
+      Object.assign(message, data);
+      Messages.add(message, MessagesView.render);
+    });
   },
 
   render: function(data) {

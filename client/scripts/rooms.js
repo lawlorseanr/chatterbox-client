@@ -1,23 +1,26 @@
 var Rooms = {
 
-  roomList: [],
-  currentRoom: undefined,
+  _storage: new Set(),
+  selected: 'Main',
 
-  get: function() {
-    return this.roomList;
+  items: function() {
+    return [...Rooms._storage];
+  },
+
+  isSelected: function(roomname = 'Main') {
+    return Rooms.selected === 'Main' || Rooms.selected === roomname;
   },
 
   add: function(roomname) {
-    if (this.roomList.indexOf(roomname) < 0) {
-      this.roomList.push(roomname);
-    }
+    Rooms._storage.add(roomname);
   },
 
-  set: function(roomname) {
-    if (this.roomList.indexOf(roomname) <= 0) {
-      this.add(roomname);
-    }
-    this.currentRoom = roomname;
-  },
+  update: function(messages, callback = () => {}) {
+    messages.forEach(function(message) {
+      Rooms.add(message.roomname);
+    });
+
+    callback(Rooms.items());
+  }
 
 };

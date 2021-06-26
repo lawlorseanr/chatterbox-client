@@ -1,21 +1,12 @@
 var MessageView = {
 
   render: _.template(`
-      <div class="chat">
-        <div class="username"><%= username %> (<%= github_handle %>):</div>
-        <div class="messageText"><%= text %></div>
-        <div class="timestamp"><%= created_at %></div>
+      <div class="chat<%- Friends.isFriend(github) ? ' friend' : '' %>">
+        <div class="username" data-username="<%- github %>">
+          <%- username %> (<%- github %>):
+        </div>
+        <div class="messageText"><%- text %></div>
+        <div class="timestamp"><%- created_at %></div>
       </div>
     `),
-
-  fancyrender: _.template(`
-  <div class="chat fancychat">
-    <div class="username"><%= username %> (<%= github_handle %>):</div>
-    <div class="messageText"><%= text %></div>
-    <div class="timestamp"><%= created_at %></div>
-  </div>
-  `)
-
 };
-
-//{/* <div class="timestamp"><%= date %></div< */}
