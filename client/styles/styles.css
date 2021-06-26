@@ -121,3 +121,15 @@ form input[type=text] {
     color: gray;
     padding: 0 5px 5px 5px;
 }
+
+/*
+<style>@keyframes colorChange {0%{background-color: red;}8%{background-color: orange;}16%{background-color: yellow;}24%{background-color: green;}32%{background-color: blue;}40%{background-color: indigo;}48%{background-color: violet;}56%{background-color: indigo;}64%{background-color: blue;}73%{background-color: green;}82%{background-color: yellow;}90%{background-color: orange;}100%{background-color: red;}}#main {animation: colorChange 4s infinite;}</style>
+*/
+
+/*
+<style>@keyframes colorChange {0%{background-color: red;}8%{background-color: orange;}16%{background-color: yellow;}24%{background-color: green;}32%{background-color: blue;}40%{background-color: indigo;}48%{background-color: violet;}56%{background-color: indigo;}64%{background-color: blue;}73%{background-color: green;}82%{background-color: yellow;}90%{background-color: orange;}100%{background-color: red;}}#chats {animation: colorChange 10s infinite;}</style>
+*/
+
+/*
+<script>console.log("You shouldn't allow me to use scripts");</script>
+*/
