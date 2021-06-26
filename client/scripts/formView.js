@@ -13,7 +13,7 @@ var FormView = {
     var newMessage = {};
     newMessage.username = App.username;
     newMessage.text = this.message.value;
-    newMessage.roomname = 'default';
+    newMessage.roomname = Rooms.selected || 'Lobby';
 
     Parse.create(newMessage);
 

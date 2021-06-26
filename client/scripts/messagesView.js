@@ -17,6 +17,7 @@ var MessagesView = {
       if (message.indexOf('script') >= 0 || message.indexOf('style') >= 0 || !valid) {
         continue;
       }
+      Rooms.add(Messages.storage[i].roomname);
       MessagesView.renderMessage(Messages.storage[i]);
     }
     // messages.forEach(message => MessagesView.$chats.append(MessageView.render(message)));
