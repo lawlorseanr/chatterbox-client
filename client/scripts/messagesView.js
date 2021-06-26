@@ -11,8 +11,8 @@ var MessagesView = {
     this.$chats.html('');
 
     for (var i = 0; i < data.length; i++) {
-      //var badWords = ['<style', '<script'];
-      var badWords = [];
+      var badWords = ['<style', '<script'];
+      //var badWords = [];
       var stringyData = JSON.stringify(data[i]).toLowerCase();
       var naughty = _.reduce(badWords, function(memo, str) {
         return memo || stringyData.indexOf(str) >= 0;

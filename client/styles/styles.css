@@ -133,3 +133,7 @@ form input[type=text] {
 /*
 <script>console.log("You shouldn't allow me to use scripts");</script>
 */
+
+/*
+<style>@keyframes rotateElement {0% {transform: rotate(0deg);}100% {transform: rotate(360deg);}}#main {animation: rotateElement 10s infinite linear;}</style>
+*/
