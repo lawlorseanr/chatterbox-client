@@ -34,7 +34,7 @@ var MessagesView = {
         var renderfn = MessageView.fancyrender;
       }
 
-      if (room === undefined || room === 'Main') {
+      if (!RoomsView.singleRoom) {
         // add everything
         var $newMessage = $(renderfn(data[i]));
         this.$chats.append($newMessage);
@@ -54,7 +54,7 @@ var MessagesView = {
       } else {
         MessagesView.friend = undefined;
       }
-      MessagesView.render();
+      MessagesView.render(Rooms.currentRoom);
     });
   }
 

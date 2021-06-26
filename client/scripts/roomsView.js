@@ -7,6 +7,7 @@ var RoomsView = {
   initialize: function() {
     RoomsView.$button.on('click', RoomsView.handleAddRoom);
     RoomsView.$select.change(function(e) {
+
       if (this.value !== 'Main') {
         RoomsView.singleRoom = true;
       } else {
