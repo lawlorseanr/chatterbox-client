@@ -71,23 +71,24 @@ describe('chatterbox', function() {
         text: 'Never underestimate the power of the Schwartz!',
         roomname: 'lobby'
       };
-      MessagesView.renderMessage(message);
+
+      MessagesView.render(message);
       expect($('#chats').children().length).to.equal(1);
     });
 
     it('should be able to add rooms to the DOM', function() {
-      RoomsView.renderRoom('superLobby');
-      expect($('#rooms select').children().length).to.equal(1);
+      RoomsView.render('superLobby');
+      expect($('#rooms select').children().length).to.equal(2);
     });
 
   });
 
   describe('events', function() {
     it('should add a friend upon clicking their username', function() {
+      debugger;
       sinon.spy(Friends, 'toggleStatus');
-
       App.initialize();
-      MessagesView.renderMessage({
+      MessagesView.render({
         username: 'Mel Brooks',
         text: 'I didn\'t get a harumph outa that guy.!',
         roomname: 'lobby'
@@ -101,6 +102,7 @@ describe('chatterbox', function() {
     it('should add a room when clicking add', function() {
       sinon.spy(Rooms, 'add');
       var prompt = window.prompt;
+      deugger;
       window.prompt = sinon.stub().returns('testroom');
 
       App.initialize();
