@@ -7,7 +7,7 @@ var RoomsView = {
     RoomsView.$select.on('change', RoomsView.handleChange);
     RoomsView.$button.on('click', RoomsView.handleClick);
 
-    Rooms.add('Main');
+    Rooms.add('lobby');
   },
 
   render: function(data) {
@@ -31,7 +31,9 @@ var RoomsView = {
   handleClick: function() {
     var roomname = prompt('New Room Name:');
     if (roomname) {
+      debugger;
       Rooms.add(roomname);
+      Rooms.selected = roomname;
       RoomsView.render(Rooms.items());
       MessagesView.render(Messages.items());
     }

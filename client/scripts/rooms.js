@@ -1,14 +1,14 @@
 var Rooms = {
 
   _storage: new Set(),
-  selected: 'Main',
+  selected: 'lobby',
 
   items: function() {
     return [...Rooms._storage];
   },
 
-  isSelected: function(roomname = 'Main') {
-    return Rooms.selected === 'Main' || Rooms.selected === roomname;
+  isSelected: function(roomname = 'lobby') {
+    return Rooms.selected === roomname;
   },
 
   add: function(roomname) {

@@ -20,7 +20,7 @@ var Messages = {
     var conformMessage = {};
     conformMessage.text = message.text || '';
     conformMessage.username = message.username || '';
-    conformMessage.roomname = message.roomname || 'Main';
+    conformMessage.roomname = message.roomname || 'lobby';
     conformMessage.github = message.github_handle || '';
     conformMessage.date = message.created_at || 'Unknown';
     return conformMessage;
