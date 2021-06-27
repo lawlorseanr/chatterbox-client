@@ -12,7 +12,9 @@ var Rooms = {
   },
 
   add: function(roomname) {
-    Rooms._storage.add(roomname);
+    if (roomname !== undefined && roomname !== null) {
+      Rooms._storage.add(roomname);
+    }
   },
 
   update: function(messages, callback = () => {}) {

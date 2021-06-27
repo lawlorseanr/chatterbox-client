@@ -15,7 +15,7 @@ var FormView = {
     newMessage.roomname = Rooms.select || 'Main';
     FormView.$form.find('#message').val('');
     Parse.create(newMessage, function(data) {
-      Messages.add(data[0], MessagesView.render);
+      Messages.update(data, MessagesView.render);
     });
   },
 

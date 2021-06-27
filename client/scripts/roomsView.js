@@ -10,9 +10,9 @@ var RoomsView = {
     Rooms.add('Main');
   },
 
-  render: function() {
+  render: function(data) {
     RoomsView.$select.html('');
-    Rooms.items().forEach(RoomsView.renderRoom);
+    data.forEach(RoomsView.renderRoom);
     RoomsView.$select.val(Rooms.selected);
   },
 
@@ -32,8 +32,7 @@ var RoomsView = {
     var roomname = prompt('New Room Name:');
     if (roomname) {
       Rooms.add(roomname);
-      Rooms.selected = roomname;
-      RoomsView.render();
+      RoomsView.render(Rooms.items());
       MessagesView.render(Messages.items());
     }
   },

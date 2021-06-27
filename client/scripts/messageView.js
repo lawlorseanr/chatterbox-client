@@ -6,7 +6,7 @@ var MessageView = {
           <%- username %> (<%- github %>):
         </div>
         <div class="messageText"><%- text %></div>
-        <div class="timestamp"><%- created_at %></div>
+        <div class="timestamp"><%- date %></div>
       </div>
     `),
 };

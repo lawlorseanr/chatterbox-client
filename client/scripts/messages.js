@@ -5,9 +5,8 @@ var Messages = {
     return Object.values(Messages._storage);
   },
 
-  add: function(message, callback = () => {}) {
+  add: function(message) {
     Messages._storage[message.message_id] = Messages.conform(message);
-    callback(Messages.items());
   },
 
   update: function(data, callback) {
@@ -23,7 +22,7 @@ var Messages = {
     conformMessage.username = message.username || '';
     conformMessage.roomname = message.roomname || 'Main';
     conformMessage.github = message.github_handle || '';
-    conformMessage.created_at = message.created_at || 'Unknown';
+    conformMessage.date = message.created_at || 'Unknown';
     return conformMessage;
   }
 
