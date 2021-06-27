@@ -9,15 +9,13 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form (default POST)
     event.preventDefault();
-    var message = {};
-    message.username = App.username;
-    message.text = FormView.$form.find('#message').val();
-    message.roomname = Rooms.select || 'Main';
-
-    FormView.$form.find('#message').value = '';
-    Parse.create(message, function(data) {
-      Object.assign(message, data);
-      Messages.add(message, MessagesView.render);
+    var newMessage = {};
+    newMessage.username = App.username;
+    newMessage.text = FormView.$form.find('#message').val();
+    newMessage.roomname = Rooms.select || 'Main';
+    FormView.$form.find('#message').val('');
+    Parse.create(newMessage, function(data) {
+      Messages.add(data[0], MessagesView.render);
     });
   },
 
